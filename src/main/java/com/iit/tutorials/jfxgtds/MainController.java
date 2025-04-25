@@ -46,6 +46,8 @@ public class MainController {
     public Label validLabels;
     @FXML
     public Label invalidLabels;
+    @FXML
+    public Label massegeLabel;
 
     private File selectedFile;
     private ObservableList<Transaction> transactionList = FXCollections.observableArrayList();
@@ -92,19 +94,25 @@ public class MainController {
     }
 
     public void onClickValidate(ActionEvent actionEvent) {
+        if (transactionList.isEmpty()) {
+            massegeLabel.setText("No transactions to validate");
+            return;
+        }
         int total = transactionList.size();
-        int valid = 0;
-        int invalid = 0;
+        int validCount = 0;
+        int invalidCount = 0;
 
         for (Transaction tx : transactionList) {
-            if (tx.isValid()) {
-                valid++;
+            boolean isValid = Validation.validCheck(tx) ;
+            tx.setValid(isValid);
+            if (isValid) {
+                validCount++;
             } else {
-                invalid++;
+                invalidCount++;
             }
+            totalRecordsLabel.setText(Integer.toString(total));
+            validLabels.setText(Integer.toString(validCount));
+            invalidLabels.setText(Integer.toString(invalidCount));
         }
-        totalRecordsLabel.setText(Integer.toString(total));
-        validLabels.setText(Integer.toString(valid));
-        invalidLabels.setText(Integer.toString(invalid));
     }
 }

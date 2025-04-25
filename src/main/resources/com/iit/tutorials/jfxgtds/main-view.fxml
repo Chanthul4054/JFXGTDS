@@ -69,4 +69,9 @@
          <Font size="15.0" />
       </font>
    </Label>
+   <Label fx:id="massegeLabel" layoutX="20.0" layoutY="475.0" prefHeight="45.0" prefWidth="959.0">
+      <font>
+         <Font size="21.0" />
+      </font>
+   </Label>
 </AnchorPane>

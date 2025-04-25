@@ -55,7 +55,7 @@ public class Transaction {
         public boolean isValid(){
             return valid.get();
         }
-        public void setValid(boolean isValid){
-            this.valid.set(isValid);
+        public void setValid(boolean validCheck){
+            this.valid.set(validCheck);
         }
 }
