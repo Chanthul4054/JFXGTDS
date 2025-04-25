@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
@@ -14,6 +15,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Objects;
 
 public class MainController {
 
@@ -207,5 +209,12 @@ public class MainController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    public void onClickOpenTaxWindow(ActionEvent actionEvent) throws IOException {
+        Stage newStage = new Stage();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
+        newStage.setScene(new Scene(root, 600, 400));
+        newStage.show();
     }
 }

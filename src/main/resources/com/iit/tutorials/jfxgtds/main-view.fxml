@@ -89,4 +89,9 @@
          <Font name="System Bold" size="15.0" />
       </font>
    </Button>
+   <Button fx:id="calculateTaxButoon" layoutX="94.0" layoutY="632.0" mnemonicParsing="false" onAction="#onClickOpenTaxWindow" prefHeight="57.0" prefWidth="229.0" text="Calculate Tax">
+      <font>
+         <Font name="System Bold" size="26.0" />
+      </font>
+   </Button>
 </AnchorPane>
