@@ -84,4 +84,9 @@
          <Font name="System Bold" size="15.0" />
       </font>
    </Button>
+   <Button fx:id="saveChangesButton" layoutX="396.0" layoutY="562.0" mnemonicParsing="false" onAction="#onClickSaveChangers" prefHeight="36.0" prefWidth="136.0" text="Save Changes">
+      <font>
+         <Font name="System Bold" size="15.0" />
+      </font>
+   </Button>
 </AnchorPane>

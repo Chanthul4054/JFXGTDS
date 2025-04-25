@@ -58,4 +58,26 @@ public class Transaction {
         public void setValid(boolean validCheck){
             this.valid.set(validCheck);
         }
+        public void setBillNumber(String billNumber) {
+            this.billNumber.set(billNumber);
+        }
+        public void setItemCode(String itemCode) {
+            this.itemCode.set(itemCode);
+        }
+        public void setInternalPrice(double internalPrice) {
+            this.internalPrice.set(internalPrice);
+        }
+        public void setQuantity(double quantity) {
+            this.quantity.set(quantity);
+        }
+        public void setDiscount(double discount) {
+            this.discount.set(discount);
+        }
+        public void setSalePrice(double salePrice) {
+            this.salePrice.set(salePrice);
+        }
+        public void setChecksum(int checksum) {
+            this.checksum.set(checksum);
+        }
+
 }

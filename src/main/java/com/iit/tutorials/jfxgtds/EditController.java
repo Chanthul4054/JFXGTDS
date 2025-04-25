@@ -29,16 +29,21 @@ public class EditController {
         this.transaction = tx;
         billNumberField.setText(tx.getBillNumber().get());
         itemCodeField.setText(tx.getItemCode().get());
-        salePriceField.setText(String.valueOf(tx.getSalePrice()));
-        internalPriceField.setText(String.valueOf(tx.getInternalPrice().get()));
-        discountField.setText(String.valueOf(tx.getDiscount().get()));
-        quantityField.setText(String.valueOf(tx.getQuantity()));
+        salePriceField.setText(Validation.formatDouble(tx.getSalePrice().get()));
+        internalPriceField.setText(Validation.formatDouble(tx.getInternalPrice().get()));
+        discountField.setText(Validation.formatDouble(tx.getDiscount().get()));
+        quantityField.setText(Validation.formatDouble(tx.getQuantity().get()));
+
     }
 
     @FXML
     public void onClickSave(ActionEvent actionEvent) {
-
-
+        transaction.setBillNumber(billNumberField.getText());
+        transaction.setItemCode(itemCodeField.getText());
+        transaction.setInternalPrice(Double.parseDouble(internalPriceField.getText()));
+        transaction.setDiscount(Double.parseDouble(discountField.getText()));
+        transaction.setSalePrice(Double.parseDouble(salePriceField.getText()));
+        transaction.setQuantity(Double.parseDouble(quantityField.getText()));
 
         String lineChecksum =billNumberField.getText()+","+itemCodeField.getText()+","+internalPriceField.getText()+","+discountField.getText()+","+salePriceField.getText()+","+quantityField.getText();
         int newChecksum = Validation.checksum(lineChecksum);
