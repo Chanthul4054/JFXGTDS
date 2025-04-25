@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="1000.0" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iit.tutorials.jfxgtds.MainController">
+   <TableView fx:id="transactionTable" layoutX="94.0" layoutY="136.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="327.0" prefWidth="611.0">
+      <columns>
+         <TableColumn fx:id="billNumberCol" prefWidth="100.00003433227539" text="Bill Number " />
+         <TableColumn fx:id="itemCodeCol" prefWidth="90.0" text="Item Code" />
+         <TableColumn fx:id="internalPriceCol" prefWidth="105.99998474121094" text="Internal Price" />
+         <TableColumn fx:id="discountCol" prefWidth="74.0" text="Discount" />
+         <TableColumn fx:id="salePriceCol" minWidth="8.66668701171875" prefWidth="79.33331298828125" text="Sale Price" />
+         <TableColumn fx:id="quantityCol" minWidth="0.0" prefWidth="78.00003051757812" text="Quantity" />
+         <TableColumn fx:id="checksumCol" prefWidth="81.33327229817712" text="Checksum" />
+      </columns>
+   </TableView>
+   <Button fx:id="chooseFileButton" layoutX="26.0" layoutY="27.0" mnemonicParsing="false" onAction="#onClickChooseFile" prefHeight="36.0" prefWidth="103.0" text="Choose File">
+      <font>
+         <Font name="System Bold" size="15.0" />
+      </font>
+   </Button>
+   <Label fx:id="filePathBox" layoutX="140.0" layoutY="27.0" prefHeight="36.0" prefWidth="818.0" text="No File Selected">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Label>
+   <Button fx:id="importButton" layoutX="140.0" layoutY="75.0" mnemonicParsing="false" onAction="#onClickImport" prefHeight="36.0" prefWidth="103.0" text="Import">
+      <font>
+         <Font name="System Bold" size="15.0" />
+      </font>
+   </Button>
+   <Button fx:id="validateButton" layoutX="744.0" layoutY="174.0" mnemonicParsing="false" onAction="#onClickValidate" prefHeight="36.0" prefWidth="103.0" text="Validate">
+      <font>
+         <Font name="System Bold" size="15.0" />
+      </font>
+   </Button>
+   <Label layoutX="728.0" layoutY="230.0" prefHeight="36.0" prefWidth="113.0" text="Total Records   :">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Label>
+   <Label layoutX="728.0" layoutY="266.0" prefHeight="36.0" prefWidth="113.0" text="Valid                :" textAlignment="RIGHT">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Label>
+   <Label layoutX="728.0" layoutY="302.0" prefHeight="36.0" prefWidth="113.0" text="Invalid              : ">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Label>
+   <Label fx:id="totalRecordsLabel" layoutX="847.0" layoutY="230.0" prefHeight="36.0" prefWidth="87.0">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Label>
+   <Label fx:id="validLabels" layoutX="847.0" layoutY="266.0" prefHeight="36.0" prefWidth="87.0">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Label>
+   <Label fx:id="invalidLabels" layoutX="847.0" layoutY="302.0" prefHeight="36.0" prefWidth="87.0" textFill="#d90c0c">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Label>
+</AnchorPane>
