@@ -4,10 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -91,6 +88,22 @@ public class MainController {
         checksumCol.setCellValueFactory(cellData -> cellData.getValue().getChecksum());
 
         transactionTable.setItems(transactionList);
+
+        transactionTable.setRowFactory(tv -> new TableRow<>(){
+            @Override
+            protected void updateItem(Transaction item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item == null || empty)
+                    setStyle("");
+                else{
+                    if (!item.isValid()){
+                        setStyle("-fx-background-color: #ce8a8a;");
+                    }else{
+                        setStyle("");
+                    }
+                }
+            }
+        });
     }
 
     public void onClickValidate(ActionEvent actionEvent) {
@@ -110,6 +123,9 @@ public class MainController {
             } else {
                 invalidCount++;
             }
+
+            transactionTable.refresh();
+
             totalRecordsLabel.setText(Integer.toString(total));
             validLabels.setText(Integer.toString(validCount));
             invalidLabels.setText(Integer.toString(invalidCount));

@@ -28,11 +28,6 @@ public class Validation {
     public static boolean validCheck(Transaction tx){
         String lineChecksum =tx.getBillNumber().get()+","+tx.getItemCode().get()+","+tx.getInternalPrice().get()+","+tx.getDiscount().get()+","+tx.getSalePrice().get()+","+tx.getQuantity().get();
         int calculatedChecksum = checksum(lineChecksum);
-
-        System.out.println("Line being checksummed: '" + lineChecksum + "'");
-        System.out.println("Calculated checksum: " + calculatedChecksum);
-        System.out.println("Original checksum from CSV: " + tx.getChecksum().get());
-
         boolean checksumCorrect = tx.getChecksum().get() == calculatedChecksum;
         boolean hasNoSpecialChar = !checkSpecialChar(tx.getItemCode().get());
         boolean noNegativePrice = tx.getSalePrice().get() >= 0 && tx.getInternalPrice().get() >= 0;
