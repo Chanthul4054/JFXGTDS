@@ -1,8 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane minHeight="800.0" minWidth="1000.0" prefHeight="0.0" prefWidth="0.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iit.tutorials.jfxgtds.EditController">
-
+<AnchorPane minHeight="500.0" minWidth="600.0" prefHeight="0.0" prefWidth="0.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iit.tutorials.jfxgtds.EditController">
+   <children>
+      <TextField fx:id="billNumberField" layoutX="222.0" layoutY="104.0" prefHeight="31.0" prefWidth="183.0" />
+      <TextField fx:id="itemCodeField" layoutX="222.0" layoutY="162.0" prefHeight="31.0" prefWidth="183.0" />
+      <Label layoutX="82.0" layoutY="104.0" prefHeight="31.0" prefWidth="110.0" text="New Bill Number" />
+      <Label layoutX="82.0" layoutY="162.0" prefHeight="31.0" prefWidth="110.0" text="New item Code" />
+      <Label layoutX="146.0" layoutY="28.0" prefHeight="54.0" prefWidth="308.0" text="Edit Transaction">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+      </Label>
+      <TextField fx:id="discountField" layoutX="222.0" layoutY="266.0" prefHeight="31.0" prefWidth="183.0" />
+      <TextField fx:id="internalPriceField" layoutX="222.0" layoutY="210.0" prefHeight="31.0" prefWidth="183.0" />
+      <Label layoutX="82.0" layoutY="266.0" prefHeight="31.0" prefWidth="110.0" text="New Discount" />
+      <Label layoutX="71.0" layoutY="210.0" prefHeight="31.0" prefWidth="121.0" text="New Internal Price" />
+      <Label layoutX="82.0" layoutY="315.0" prefHeight="31.0" prefWidth="110.0" text="New Sale Price" />
+      <TextField fx:id="salePriceField" layoutX="222.0" layoutY="315.0" prefHeight="31.0" prefWidth="183.0" />
+      <TextField fx:id="quantityField" layoutX="222.0" layoutY="371.0" prefHeight="31.0" prefWidth="183.0" />
+      <Label layoutX="82.0" layoutY="371.0" prefHeight="31.0" prefWidth="110.0" text="New Quatity" />
+      <Button fx:id="saveButton" layoutX="192.0" layoutY="424.0" mnemonicParsing="false" onAction="#onClickSave" prefHeight="47.0" prefWidth="157.0" text="Save">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>

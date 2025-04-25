@@ -2,6 +2,8 @@ package com.iit.tutorials.jfxgtds;
 
 import com.iit.tutorials.jfxgtds.Transaction;
 
+import java.text.DecimalFormat;
+
 public class Validation {
     public static int checksum(String line) {
         int uppercase = 0;
@@ -33,5 +35,9 @@ public class Validation {
         boolean noNegativePrice = tx.getSalePrice().get() >= 0 && tx.getInternalPrice().get() >= 0;
 
         return  hasNoSpecialChar && noNegativePrice && checksumCorrect;
+    }
+
+    public static String formatDouble(double value){
+        return new DecimalFormat("#.0").format(value);
     }
 }

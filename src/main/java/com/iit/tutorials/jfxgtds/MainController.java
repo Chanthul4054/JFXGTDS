@@ -4,12 +4,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 import java.sql.SQLOutput;
+import java.util.Objects;
 
 public class MainController {
 
@@ -130,5 +135,32 @@ public class MainController {
             validLabels.setText(Integer.toString(validCount));
             invalidLabels.setText(Integer.toString(invalidCount));
         }
+    }
+
+    public void onClickEdit(ActionEvent actionEvent) throws IOException {
+        Transaction selected = transactionTable.getSelectionModel().getSelectedItem();
+        if (selected != null && !selected.isValid()) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("edit-view.fxml"));
+                Stage newStage = new Stage();
+                newStage.setTitle("Edit Transaction");
+                newStage.setScene(new Scene(loader.load()));
+
+                EditController controller = loader.getController();
+                controller.setTransaction(selected);
+                newStage.showAndWait();
+
+                transactionTable.refresh();
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }else{
+            System.out.println("Invalid transaction selected");
+        }
+    }
+
+    public void onClickDelete(ActionEvent actionEvent) {
+        transactionList.removeIf(tx -> !tx.isValid());
+        transactionTable.refresh();
     }
 }
