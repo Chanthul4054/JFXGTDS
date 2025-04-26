@@ -79,5 +79,8 @@ public class Transaction {
         public void setChecksum(int checksum) {
             this.checksum.set(checksum);
         }
+        public void setProfit(double profit) {
+            this.profit.set(profit);
+        }
 
 }

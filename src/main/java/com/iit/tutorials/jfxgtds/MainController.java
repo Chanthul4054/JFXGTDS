@@ -51,7 +51,12 @@ public class MainController {
     public Label invalidLabels;
     @FXML
     public Label massegeLabel;
+    @FXML
+    public Button deleteButton;
+    @FXML
+    public Button editButton;
 
+    private String loggedInUser;
     private File selectedFile;
     private ObservableList<Transaction> transactionList = FXCollections.observableArrayList();
 
@@ -213,8 +218,23 @@ public class MainController {
 
     public void onClickOpenTaxWindow(ActionEvent actionEvent) throws IOException {
         Stage newStage = new Stage();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("tax-view.fxml")));
+        Parent root = loader.load();
         newStage.setScene(new Scene(root, 600, 400));
+        TaxController controller = loader.getController();
+        controller.setTransactionList(transactionList);
+        newStage.setTitle("Calculate Tax");
         newStage.show();
+    }
+
+    public void setLoggedInUser(String username) {
+        this.loggedInUser = username;
+        if ("user".equalsIgnoreCase(username)) {
+            editButton.setVisible(false);
+            deleteButton.setVisible(false);
+        } else {
+            editButton.setVisible(true);
+            deleteButton.setVisible(true);
+        }
     }
 }
