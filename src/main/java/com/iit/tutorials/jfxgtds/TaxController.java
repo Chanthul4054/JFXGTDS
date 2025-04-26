@@ -38,14 +38,14 @@ public class TaxController {
         }
 
         double finalTax = totalProfit * taxRate / 100;
-        taxLabel.setText(Validation.formatDouble(finalTax));
-        profitLabel.setText(Validation.formatDouble(totalProfit));
+        taxLabel.setText("Rs."+Validation.formatDouble(finalTax));
+        profitLabel.setText("Rs."+Validation.formatDouble(totalProfit));
         messageBox.setText("Tax calculated");
     }
 
     private double calculateProfit(Transaction tx) {
         double saleTotalPrice =(tx.getSalePrice().get() - tx.getDiscount().get())* tx.getQuantity().get();
         double internalTotalPrice = tx.getInternalPrice().get() * tx.getQuantity().get();
-        return internalTotalPrice - saleTotalPrice;
+        return saleTotalPrice - internalTotalPrice;
     }
 }
