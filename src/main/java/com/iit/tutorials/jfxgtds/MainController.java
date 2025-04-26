@@ -87,6 +87,7 @@ public class MainController {
             System.out.println("No file selected");
 
         }
+
     }
 
     @FXML

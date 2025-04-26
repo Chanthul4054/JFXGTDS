@@ -44,7 +44,7 @@ public class TaxController {
     }
 
     private double calculateProfit(Transaction tx) {
-        double saleTotalPrice = tx.getSalePrice().get() - tx.getQuantity().get() * (100 - tx.getDiscount().get()/100);
+        double saleTotalPrice =(tx.getSalePrice().get() - tx.getDiscount().get())* tx.getQuantity().get();
         double internalTotalPrice = tx.getInternalPrice().get() * tx.getQuantity().get();
         return internalTotalPrice - saleTotalPrice;
     }
