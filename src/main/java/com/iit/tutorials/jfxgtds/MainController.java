@@ -101,21 +101,6 @@ public class MainController {
 
         transactionTable.setItems(transactionList);
 
-        transactionTable.setRowFactory(tv -> new TableRow<>(){
-            @Override
-            protected void updateItem(Transaction item, boolean empty) {
-                super.updateItem(item, empty);
-                if (item == null || empty)
-                    setStyle("");
-                else{
-                    if (!item.isValid()){
-                        setStyle("-fx-background-color: #ce8a8a;");
-                    }else{
-                        setStyle("");
-                    }
-                }
-            }
-        });
     }
 
     public void onClickValidate(ActionEvent actionEvent) {
@@ -137,6 +122,8 @@ public class MainController {
             }
 
             transactionTable.refresh();
+
+            applyCellColoring();
 
             totalRecordsLabel.setText(Integer.toString(total));
             validLabels.setText(Integer.toString(validCount));
@@ -236,5 +223,81 @@ public class MainController {
             editButton.setVisible(true);
             deleteButton.setVisible(true);
         }
+    }
+    private void applyCellColoring() {
+        itemCodeCol.setCellFactory(column -> new TableCell<Transaction, String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(item);
+                    if (Validation.checkSpecialChar(item)) {
+                        setStyle("-fx-background-color: #ce8a8a;");
+                    } else {
+                        setStyle("");
+                    }
+                }
+            }
+        });
+
+        checksumCol.setCellFactory(column -> new TableCell<Transaction, Number>() {
+            @Override
+            protected void updateItem(Number item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                } else{
+                    setText(String.valueOf(item));
+                    Transaction tx = getTableView().getItems().get(getIndex());
+                    if(!Validation.validChecksum(tx)) {
+                        setStyle("-fx-background-color: #ce8a8a;");
+                    }else {
+                        setStyle("");
+                    }
+                }
+            }
+        });
+
+        salePriceCol.setCellFactory(column -> new TableCell<Transaction, Number>() {
+            @Override
+            protected void updateItem(Number item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(String.valueOf(item));
+                    Transaction tx = getTableView().getItems().get(getIndex());
+                    if (tx.getSalePrice().get() < 0) {
+                        setStyle("-fx-background-color: #ce8a8a;"); // Yellow
+                    } else {
+                        setStyle("");
+                    }
+                }
+            }
+        });
+
+        internalPriceCol.setCellFactory(column -> new TableCell<Transaction, Number>() {
+            @Override
+            protected void updateItem(Number item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(String.valueOf(item));
+                    Transaction tx = getTableView().getItems().get(getIndex());
+                    if (tx.getInternalPrice().get() < 0) {
+                        setStyle("-fx-background-color: #ce8a8a;"); // Yellow
+                    } else {
+                        setStyle("");
+                    }
+                }
+            }
+        });
     }
 }

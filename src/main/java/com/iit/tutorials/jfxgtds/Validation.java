@@ -1,7 +1,5 @@
 package com.iit.tutorials.jfxgtds;
 
-import com.iit.tutorials.jfxgtds.Transaction;
-
 import java.text.DecimalFormat;
 
 public class Validation {
@@ -39,5 +37,11 @@ public class Validation {
 
     public static String formatDouble(double value){
         return new DecimalFormat("#.0").format(value);
+    }
+
+    public static boolean validChecksum(Transaction tx){
+        String lineChecksum =tx.getBillNumber().get()+","+tx.getItemCode().get()+","+tx.getInternalPrice().get()+","+tx.getDiscount().get()+","+tx.getSalePrice().get()+","+tx.getQuantity().get();
+        int calculatedChecksum = checksum(lineChecksum);
+        return tx.getChecksum().get() == calculatedChecksum;
     }
 }

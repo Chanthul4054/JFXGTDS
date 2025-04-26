@@ -52,10 +52,8 @@ public class LoginController {
         Stage mainStage = (Stage) loginLabal.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("main-view.fxml")));
         Parent root = loader.load();
-
         MainController controller = loader.getController();
-        controller.setLoggedInUser(username);  // ✅ Now the MainController knows the user!
-
+        controller.setLoggedInUser(username);
         mainStage.setScene(new Scene(root, 1000, 800));
         mainStage.show();
 
