@@ -117,10 +117,9 @@ public class MainController {
             } else {
                 invalidCount++;
             }
-
+            applyCellColoring();
             transactionTable.refresh();
 
-            applyCellColoring();
 
             totalRecordsLabel.setText(Integer.toString(total));
             validLabels.setText(Integer.toString(validCount));

@@ -44,4 +44,5 @@ public class Validation {
         int calculatedChecksum = checksum(lineChecksum);
         return tx.getChecksum().get() == calculatedChecksum;
     }
+
 }
