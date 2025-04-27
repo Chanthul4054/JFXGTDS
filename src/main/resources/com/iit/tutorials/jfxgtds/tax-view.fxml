@@ -24,7 +24,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Button fx:id="calculateButton" layoutX="71.0" layoutY="222.0" mnemonicParsing="false" onAction="#onClickCalculateTax" prefHeight="37.0" prefWidth="123.0" text="Calculate">
+      <Button fx:id="calculateButton" layoutX="71.0" layoutY="222.0" mnemonicParsing="false" onAction="#onClickCalculateTax" prefHeight="43.0" prefWidth="129.0" text="Calculate">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
