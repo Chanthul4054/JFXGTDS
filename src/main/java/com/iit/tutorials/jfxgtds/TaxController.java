@@ -1,7 +1,7 @@
 package com.iit.tutorials.jfxgtds;
 
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -24,7 +24,7 @@ public class TaxController {
     public void setTransactionList(ObservableList<Transaction> transactionList){
         this.transactionList = transactionList ; 
     }
-    public void onClickCalculateTax(ActionEvent actionEvent) {
+    public void onClickCalculateTax() {
         if (transactionList == null || transactionList.isEmpty()) {
             messageBox.setText("No transactions to calculate");
             return;

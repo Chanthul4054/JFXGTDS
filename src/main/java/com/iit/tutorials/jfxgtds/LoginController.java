@@ -25,13 +25,6 @@ public class LoginController {
     @FXML
     public Label messageLabel;
 
-    @FXML
-    public String validateLogin( String username, String password) {
-        if (username.isEmpty() && password.isEmpty()) {
-            loginLabal.setText("username password is empty!");
-        }
-        return "valid";
-    }
 
     public void onLoginClick() throws IOException {
         String username = useNameText.getText();

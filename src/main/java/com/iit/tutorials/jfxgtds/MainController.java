@@ -2,7 +2,6 @@ package com.iit.tutorials.jfxgtds;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -56,12 +55,11 @@ public class MainController {
     @FXML
     public Button editButton;
 
-    private String loggedInUser;
     private File selectedFile;
-    private ObservableList<Transaction> transactionList = FXCollections.observableArrayList();
+    private final ObservableList<Transaction> transactionList = FXCollections.observableArrayList();
 
     @FXML
-    public void onClickChooseFile(ActionEvent actionEvent) {
+    public void onClickChooseFile() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select Transaction CSV File");
 
@@ -78,16 +76,14 @@ public class MainController {
     }
 
     @FXML
-    public void onClickImport(ActionEvent actionEvent) {
+    public void onClickImport() {
         if (selectedFile != null) {
             transactionList.clear();
             transactionList.addAll(CSVImport.importCSV(selectedFile));
             System.out.println("Imported" + transactionList.size() + " transactions");
         } else {
             System.out.println("No file selected");
-
         }
-
     }
 
     @FXML
@@ -104,7 +100,7 @@ public class MainController {
 
     }
 
-    public void onClickValidate(ActionEvent actionEvent) {
+    public void onClickValidate() {
         if (transactionList.isEmpty()) {
             massegeLabel.setText("No transactions to validate");
             return;
@@ -132,7 +128,7 @@ public class MainController {
         }
     }
 
-    public void onClickEdit(ActionEvent actionEvent) throws IOException {
+    public void onClickEdit() {
         Transaction selected = transactionTable.getSelectionModel().getSelectedItem();
         if (selected != null && !selected.isValid()) {
             try {
@@ -154,7 +150,7 @@ public class MainController {
         }
     }
 
-    public void onClickDelete(ActionEvent actionEvent) {
+    public void onClickDelete() {
         Transaction selected = transactionTable.getSelectionModel().getSelectedItem();
         if (selected != null && !selected.isValid()) {
             transactionList.remove(selected);
@@ -166,7 +162,7 @@ public class MainController {
         transactionTable.refresh();
     }
 
-    public void onClickSaveChangers(ActionEvent actionEvent) {
+    public void onClickSaveChangers() {
         if(transactionList.isEmpty()){
             System.out.println("No transactions to save");
             return;
@@ -204,7 +200,7 @@ public class MainController {
         alert.showAndWait();
     }
 
-    public void onClickOpenTaxWindow(ActionEvent actionEvent) throws IOException {
+    public void onClickOpenTaxWindow() throws IOException {
         Stage newStage = new Stage();
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("tax-view.fxml")));
         Parent root = loader.load();
@@ -216,7 +212,6 @@ public class MainController {
     }
 
     public void setLoggedInUser(String username) {
-        this.loggedInUser = username;
         if ("user".equalsIgnoreCase(username)) {
             editButton.setVisible(false);
             deleteButton.setVisible(false);

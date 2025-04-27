@@ -1,12 +1,12 @@
 package com.iit.tutorials.jfxgtds;
 
-import com.iit.tutorials.jfxgtds.Transaction;
+
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.io.*;
-import java.util.*;
+
 
 public class CSVImport {
     public static ObservableList<Transaction> importCSV(File csvFile) {

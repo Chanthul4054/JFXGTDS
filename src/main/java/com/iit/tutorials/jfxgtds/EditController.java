@@ -1,6 +1,6 @@
 package com.iit.tutorials.jfxgtds;
 
-import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -37,7 +37,7 @@ public class EditController {
     }
 
     @FXML
-    public void onClickSave(ActionEvent actionEvent) {
+    public void onClickSave() {
         transaction.setBillNumber(billNumberField.getText());
         transaction.setItemCode(itemCodeField.getText());
         transaction.setInternalPrice(Double.parseDouble(internalPriceField.getText()));
